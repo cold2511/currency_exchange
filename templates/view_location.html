@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>View Locations</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <style>
+        #map {
+            height: 400px;
+            width: 100%;
+        }
+    </style>
+    <script>
+        function initMap() {
+            var map = L.map('map').setView([0, 0], 2);
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            }).addTo(map);
+
+            var users = {{ users | tojson }};
+
+            users.forEach(function(user) {
+                if (user.location) {
+                    L.marker([parseFloat(user.location.latitude), parseFloat(user.location.longitude)])
+                        .addTo(map)
+                        .bindPopup(user.name);
+                }
+            });
+        }
+    </script>
+</head>
+<body onload="initMap()">
+    <h1>Shared Locations</h1>
+    <div id="map"></div>
+</body>
+</html>

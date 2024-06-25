@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dropdown from MongoDB</title>
+</head>
+<body>
+    <h1>Select an Option</h1>
+    <form>
+        <label for="options">Choose an option:</label>
+        <select name="options" id="options">
+            {% for option in options %}
+                <option value="{{ option }}">{{ option }}</option>
+            {% endfor %}
+        </select>
+    </form>
+</body>
+</html>

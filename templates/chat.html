@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chat</title>
+</head>
+<body>
+    <h1>Chat</h1>
+
+    <div>
+        {% for message in dynamic_texts %}
+            <p><strong>{{ message.name }}:</strong> {{ message.text }}</p>
+        {% endfor %}
+    </div>
+
+    <form method="POST">
+        <textarea name="user_text" rows="4" cols="50" placeholder="Type your message here..."></textarea><br>
+        <button type="submit">Send</button>
+    </form>
+    
+</body>
+</html>
